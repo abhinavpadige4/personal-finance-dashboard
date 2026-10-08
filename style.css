@@ -1,0 +1,127 @@
+/* Design Tokens */
+:root {
+  --color-primary: #2563eb;
+  --color-success: #16a34a;
+  --color-danger: #dc2626;
+  --color-warning: #f59e0b;
+  --color-background: #f8fafc;
+  --color-surface: #ffffff;
+  --color-textPrimary: #1e293b;
+  --color-textSecondary: #64748b;
+  --color-border: #e2e8f0;
+  --color-category-0: #2563eb;
+  --color-category-1: #16a34a;
+  --color-category-2: #f59e0b;
+  --color-category-3: #ef4444;
+  --color-category-4: #8b5cf6;
+  --color-category-5: #ec4899;
+  --color-category-6: #06b6d4;
+  --color-category-7: #f97316;
+
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  --spacing-2xl: 48px;
+
+  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-size-base: 16px;
+  --font-size-sm: 14px;
+  --font-size-lg: 18px;
+  --font-size-xl: 24px;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+
+  --shadow-card: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.06);
+}
+
+/* Utility Classes (exact names required) */
+.bg-background { background-color: var(--color-background); }
+.bg-surface { background-color: var(--color-surface); }
+.flex { display: flex; }
+.flex-wrap { flex-wrap: wrap; }
+.font-bold { font-weight: var(--font-weight-bold); }
+.font-medium { font-weight: var(--font-weight-medium); }
+.font-sans { font-family: var(--font-family); }
+.gap-2 { gap: var(--spacing-sm); }
+.gap-4 { gap: var(--spacing-md); }
+.gap-6 { gap: var(--spacing-lg); }
+.grid { display: grid; }
+.grid-cols-1 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
+.h-64 { height: 16rem; }
+.justify-center { justify-content: center; }
+.lg\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.lg\:grid-cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.mb-2 { margin-bottom: var(--spacing-xs); }
+.mb-6 { margin-bottom: var(--spacing-lg); }
+.md\:p-8 { padding: var(--spacing-2xl); }
+.md\:px-8 { padding-left: var(--spacing-2xl); padding-right: var(--spacing-2xl); }
+.md\:text-3xl { font-size: var(--font-size-xl); }
+.p-4 { padding: var(--spacing-md); }
+.px-4 { padding-left: var(--spacing-md); padding-right: var(--spacing-md); }
+.py-2 { padding-top: var(--spacing-sm); padding-bottom: var(--spacing-sm); }
+.rounded-lg { border-radius: var(--radius-lg); }
+.shadow-card { box-shadow: var(--shadow-card); }
+.sm\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.text-2xl { font-size: var(--font-size-xl); }
+.text-center { text-align: center; }
+.text-lg { font-size: var(--font-size-lg); }
+.text-textPrimary { color: var(--color-textPrimary); }
+.w-full { width: 100%; }
+
+/* Responsive grid helpers (Tailwind‑like) */
+@media (min-width: 640px) {
+  .sm\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (min-width: 1024px) {
+  .lg\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .lg\:grid-cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+
+/* Card component */
+.card {
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  padding: var(--spacing-md);
+  text-align: center;
+}
+.card .value {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  margin-top: var(--spacing-xs);
+}
+.card.income .value { color: var(--color-success); }
+.card.expense .value { color: var(--color-danger); }
+.card.savings .value { color: var(--color-primary); }
+
+/* Filter buttons */
+.filter-btn {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  color: var(--color-textPrimary);
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+.filter-btn.active {
+  background: var(--color-primary);
+  color: #fff;
+  border-color: var(--color-primary);
+}
+.filter-btn:hover {
+  background: var(--color-primary);
+  color: #fff;
+}
+
+/* Chart canvas container */
+canvas {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
