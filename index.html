@@ -4,52 +4,56 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Personal Finance Dashboard</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
   <link rel="stylesheet" href="style.css" />
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
-  <script defer src="script.js"></script>
 </head>
-<body>
-  <header class="header">
-    <h1 class="title">Personal Finance Dashboard</h1>
-    <span class="current-month" id="currentMonth"></span>
+<body class="bg-background text-textPrimary font-sans">
+  <header class="p-4 md:p-6 bg-surface shadow-sm">
+    <h1 class="text-xl md:text-2xl font-bold">Personal Finance Dashboard</h1>
   </header>
 
-  <main class="container">
-    <section id="summary" class="summary-grid">
-      <div class="summary-card" id="card-balance">
-        <div class="card-label">Total Balance</div>
-        <div class="card-value" data-key="totalBalance"></div>
-        <div class="card-delta" data-delta="balance"></div>
+  <main class="p-4 md:p-6 space-y-6">
+    <!-- Summary Cards -->
+    <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4" id="summary-cards">
+      <div class="card" id="card-balance">
+        <h2 class="card-title">Total Balance</h2>
+        <p class="card-value" id="value-balance">$0.00</p>
       </div>
-      <div class="summary-card" id="card-income">
-        <div class="card-label">Income</div>
-        <div class="card-value" data-key="income"></div>
-        <div class="card-delta" data-delta="income"></div>
+      <div class="card" id="card-income">
+        <h2 class="card-title">Income</h2>
+        <p class="card-value" id="value-income">$0.00</p>
       </div>
-      <div class="summary-card" id="card-expenses">
-        <div class="card-label">Expenses</div>
-        <div class="card-value" data-key="expenses"></div>
-        <div class="card-delta" data-delta="expenses"></div>
+      <div class="card" id="card-expenses">
+        <h2 class="card-title">Expenses</h2>
+        <p class="card-value" id="value-expenses">$0.00</p>
       </div>
-      <div class="summary-card" id="card-savings">
-        <div class="card-label">Savings</div>
-        <div class="card-value" data-key="savings"></div>
-        <div class="card-delta" data-delta="savings"></div>
+      <div class="card" id="card-savings">
+        <h2 class="card-title">Savings</h2>
+        <p class="card-value" id="value-savings">$0.00</p>
       </div>
     </section>
 
-    <section id="filters" class="filter-row"></section>
+    <!-- Category Filter Buttons -->
+    <section class="flex flex-wrap gap-2" id="filter-buttons">
+      <!-- Buttons will be injected by script.js -->
+    </section>
 
-    <section id="charts" class="charts-grid">
+    <!-- Charts -->
+    <section class="grid grid-cols-1 lg:grid-cols-2 gap-6">
       <div class="chart-card">
-        <h3>Spending by Category</h3>
-        <canvas id="barChart"></canvas>
+        <h2 class="chart-title mb-2">Spending by Category</h2>
+        <canvas id="categoryChart" class="w-full h-64"></canvas>
       </div>
       <div class="chart-card">
-        <h3>Monthly Trends</h3>
-        <canvas id="lineChart"></canvas>
+        <h2 class="chart-title mb-2">Monthly Trend</h2>
+        <canvas id="trendChart" class="w-full h-64"></canvas>
       </div>
     </section>
   </main>
+
+  <script src="script.js"></script>
 </body>
 </html>
