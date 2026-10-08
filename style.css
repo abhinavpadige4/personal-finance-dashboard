@@ -1,203 +1,145 @@
 /* Design Tokens */
 :root {
-  --bg: #0f172a;
-  --surface: #1e293b;
-  --text: #f1f5f9;
-  --muted: #94a3b8;
-  --accent: #6366f1;
-  --income: #10b981;
-  --expense: #ef4444;
-  --savings: #f59e0b;
-  --radius: 12px;
-  --gap: 16px;
-  --card-padding: 20px;
-  --chart-height: 300px;
-  --font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  --color-bg: #f4f6f8;
+  --color-card-bg: #ffffff;
+  --color-text-primary: #1a1a2e;
+  --color-text-secondary: #6b7280;
+  --color-accent: #4f46e5;
+  --color-income: #10b981;
+  --color-expense: #ef4444;
+  --color-savings: #3b82f6;
+  --color-balance: #8b5cf6;
+  --color-chart-palette-0: #4f46e5;
+  --color-chart-palette-1: #10b981;
+  --color-chart-palette-2: #f59e0b;
+  --color-chart-palette-3: #ef4444;
+  --color-chart-palette-4: #3b82f6;
+  --color-chart-palette-5: #8b5cf6;
+
+  --font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+
+  --spacing-card-gap: 1rem;
+  --spacing-section-gap: 1.5rem;
+  --spacing-card-padding: 1.25rem;
+
+  --border-radius: 12px;
 }
 
 /* Global Styles */
-body {
+* {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+body {
   font-family: var(--font-family);
-  background: linear-gradient(135deg, var(--bg), #1a202c);
-  color: var(--text);
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-}
-
-.container {
-  max-width: 1200px;
-  width: 100%;
-  padding: var(--gap);
-}
-
-h1, h2, h3, h4, h5, h6 {
-  margin: 0;
-  font-weight: 600;
+  background-color: var(--color-bg);
+  color: var(--color-text-primary);
+  line-height: 1.5;
+  padding: var(--spacing-section-gap);
 }
 
 /* Header */
 .header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: var(--gap);
+  text-align: center;
+  margin-bottom: var(--spacing-section-gap);
+}
+.header h1 {
+  font-size: 1.75rem;
+  color: var(--color-accent);
 }
 
-.month-label {
-  font-size: 0.9rem;
-  color: var(--muted);
-}
-
-/* Summary Grid */
-.summary-grid {
+/* Summary Cards */
+.summary-cards {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: var(--gap);
-  margin-bottom: var(--gap);
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--spacing-card-gap);
+  margin-bottom: var(--spacing-section-gap);
 }
 
-@media (max-width: 900px) {
-  .summary-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 600px) {
-  .summary-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-.summary-card {
-  background: var(--surface);
-  padding: var(--card-padding);
-  border-radius: var(--radius);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+.card {
+  background-color: var(--color-card-bg);
+  padding: var(--spacing-card-padding);
+  border-radius: var(--border-radius);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  align-items: flex-start;
 }
 
-.summary-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+.card h2 {
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+  margin-bottom: 0.25rem;
 }
 
-.card-label {
-  font-size: 0.85rem;
-  color: var(--muted);
-}
-
-.card-value {
+.value {
   font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--text);
+  font-weight: 600;
+  color: var(--color-text-primary);
 }
 
-.card-delta {
-  font-size: 0.75rem;
-  color: var(--muted);
-}
+/* Specific Card Colors */
+#card-balance .value { color: var(--color-balance); }
+#card-income .value { color: var(--color-income); }
+#card-expenses .value { color: var(--color-expense); }
+#card-savings .value { color: var(--color-savings); }
 
-/* Filter Row */
-.filter-row {
+/* Filter Buttons */
+.filter-group {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--gap);
-  margin-bottom: var(--gap);
+  gap: 0.5rem;
+  justify-content: center;
+  margin-bottom: var(--spacing-section-gap);
 }
 
 .filter-btn {
-  padding: 6px 12px;
-  border: 1px solid var(--accent);
-  border-radius: 9999px;
-  background: transparent;
-  color: var(--accent);
+  background-color: var(--color-card-bg);
+  border: 1px solid var(--color-accent);
+  color: var(--color-accent);
+  padding: 0.5rem 1rem;
+  border-radius: var(--border-radius);
   cursor: pointer;
-  font-size: 0.85rem;
-  transition: background 0.2s ease, color 0.2s ease;
+  font-size: 0.9rem;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.filter-btn:hover {
+  background-color: var(--color-accent);
+  color: #fff;
 }
 
 .filter-btn.active {
-  background: var(--accent);
-  color: var(--bg);
-}
-
-.filter-btn:hover:not(.active) {
-  background: rgba(99, 102, 241, 0.1);
+  background-color: var(--color-accent);
+  color: #fff;
 }
 
 /* Charts Grid */
 .charts-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: var(--gap);
-}
-
-@media (max-width: 900px) {
-  .charts-grid {
-    grid-template-columns: 1fr;
-  }
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--spacing-card-gap);
 }
 
 .chart-card {
-  background: var(--surface);
-  padding: var(--card-padding);
-  border-radius: var(--radius);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  background-color: var(--color-card-bg);
+  padding: var(--spacing-card-padding);
+  border-radius: var(--border-radius);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
   display: flex;
   flex-direction: column;
-  gap: var(--gap);
+  align-items: stretch;
 }
 
-.chart-card h3 {
-  margin: 0;
-  font-size: 1rem;
-  color: var(--muted);
-}
-
-.chart-wrapper {
-  position: relative;
-  height: var(--chart-height);
-}
-
-canvas {
+.chart-card canvas {
   width: 100% !important;
-  height: 100% !important;
+  height: auto !important;
 }
 
-/* Current Month */
-.current-month {
-  background: var(--accent);
-  color: var(--bg);
-  font-weight: 600;
-  padding: 6px 14px;
-  border-radius: 9999px;
-  font-size: 0.9rem;
-  border: 1px solid var(--accent);
-  cursor: default;
-  transition: background 0.2s ease, color 0.2s ease;
-}
-
-.current-month:hover {
-  background: rgba(99, 102, 241, 0.85);
-}
-
-/* Title */
-.title {
-  font-size: 1.75rem;
-  font-weight: 700;
-  color: var(--text);
-  letter-spacing: -0.025em;
-  line-height: 1.2;
-}
-
-@media (max-width: 600px) {
-  .title {
-    font-size: 1.375rem;
-  }
+/* Responsive Adjustments */
+@media (max-width: 640px) {
+  .header h1 { font-size: 1.5rem; }
+  .value { font-size: 1.25rem; }
 }
