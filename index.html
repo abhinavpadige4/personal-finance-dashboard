@@ -5,37 +5,51 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Personal Finance Dashboard</title>
   <link rel="stylesheet" href="style.css" />
-  <script type="module" src="script.js" defer></script>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script defer src="script.js"></script>
 </head>
-<body class="bg-background font-sans text-textPrimary">
-  <header class="p-4 md:p-8">
-    <h1 class="md:text-3xl font-bold text-center mb-6">Personal Finance Dashboard</h1>
+<body>
+  <header class="header">
+    <h1 class="title">Personal Finance Dashboard</h1>
+    <span class="current-month" id="currentMonth"></span>
   </header>
 
-  <!-- Summary Cards -->
-  <section id="summary" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:p-8"></section>
+  <main class="container">
+    <section id="summary" class="summary-grid">
+      <div class="summary-card" id="card-balance">
+        <div class="card-label">Total Balance</div>
+        <div class="card-value" data-key="totalBalance"></div>
+        <div class="card-delta" data-delta="balance"></div>
+      </div>
+      <div class="summary-card" id="card-income">
+        <div class="card-label">Income</div>
+        <div class="card-value" data-key="income"></div>
+        <div class="card-delta" data-delta="income"></div>
+      </div>
+      <div class="summary-card" id="card-expenses">
+        <div class="card-label">Expenses</div>
+        <div class="card-value" data-key="expenses"></div>
+        <div class="card-delta" data-delta="expenses"></div>
+      </div>
+      <div class="summary-card" id="card-savings">
+        <div class="card-label">Savings</div>
+        <div class="card-value" data-key="savings"></div>
+        <div class="card-delta" data-delta="savings"></div>
+      </div>
+    </section>
 
-  <!-- Category Filters -->
-  <section class="flex justify-center gap-2 mb-6">
-    <button class="filter-btn px-4 py-2 rounded-lg" data-category="All">All</button>
-    <button class="filter-btn px-4 py-2 rounded-lg" data-category="Food">Food</button>
-    <button class="filter-btn px-4 py-2 rounded-lg" data-category="Transport">Transport</button>
-    <button class="filter-btn px-4 py-2 rounded-lg" data-category="Entertainment">Entertainment</button>
-    <button class="filter-btn px-4 py-2 rounded-lg" data-category="Utilities">Utilities</button>
-    <button class="filter-btn px-4 py-2 rounded-lg" data-category="Shopping">Shopping</button>
-  </section>
+    <section id="filters" class="filter-row"></section>
 
-  <!-- Charts -->
-  <section class="grid grid-cols-1 lg:grid-cols-2 gap-4 md:p-8">
-    <div class="bg-surface rounded-lg shadow-card p-4">
-      <h2 class="text-lg font-medium mb-2 text-center">Spending by Category</h2>
-      <canvas id="categoryBar" class="w-full h-64"></canvas>
-    </div>
-    <div class="bg-surface rounded-lg shadow-card p-4">
-      <h2 class="text-lg font-medium mb-2 text-center">Monthly Trend</h2>
-      <canvas id="monthlyLine" class="w-full h-64"></canvas>
-    </div>
-  </section>
+    <section id="charts" class="charts-grid">
+      <div class="chart-card">
+        <h3>Spending by Category</h3>
+        <canvas id="barChart"></canvas>
+      </div>
+      <div class="chart-card">
+        <h3>Monthly Trends</h3>
+        <canvas id="lineChart"></canvas>
+      </div>
+    </section>
+  </main>
 </body>
 </html>
