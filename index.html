@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Personal Finance Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+  <script type="module" src="script.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body class="bg-background font-sans text-textPrimary">
+  <header class="p-4 md:p-8">
+    <h1 class="md:text-3xl font-bold text-center mb-6">Personal Finance Dashboard</h1>
+  </header>
+
+  <!-- Summary Cards -->
+  <section id="summary" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:p-8"></section>
+
+  <!-- Category Filters -->
+  <section class="flex justify-center gap-2 mb-6">
+    <button class="filter-btn px-4 py-2 rounded-lg" data-category="All">All</button>
+    <button class="filter-btn px-4 py-2 rounded-lg" data-category="Food">Food</button>
+    <button class="filter-btn px-4 py-2 rounded-lg" data-category="Transport">Transport</button>
+    <button class="filter-btn px-4 py-2 rounded-lg" data-category="Entertainment">Entertainment</button>
+    <button class="filter-btn px-4 py-2 rounded-lg" data-category="Utilities">Utilities</button>
+    <button class="filter-btn px-4 py-2 rounded-lg" data-category="Shopping">Shopping</button>
+  </section>
+
+  <!-- Charts -->
+  <section class="grid grid-cols-1 lg:grid-cols-2 gap-4 md:p-8">
+    <div class="bg-surface rounded-lg shadow-card p-4">
+      <h2 class="text-lg font-medium mb-2 text-center">Spending by Category</h2>
+      <canvas id="categoryBar" class="w-full h-64"></canvas>
+    </div>
+    <div class="bg-surface rounded-lg shadow-card p-4">
+      <h2 class="text-lg font-medium mb-2 text-center">Monthly Trend</h2>
+      <canvas id="monthlyLine" class="w-full h-64"></canvas>
+    </div>
+  </section>
+</body>
+</html>
