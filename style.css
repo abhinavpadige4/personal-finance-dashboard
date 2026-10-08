@@ -1,145 +1,143 @@
 /* Design Tokens */
 :root {
-  --color-bg: #f4f6f8;
-  --color-card-bg: #ffffff;
-  --color-text-primary: #1a1a2e;
-  --color-text-secondary: #6b7280;
-  --color-accent: #4f46e5;
-  --color-income: #10b981;
-  --color-expense: #ef4444;
-  --color-savings: #3b82f6;
-  --color-balance: #8b5cf6;
-  --color-chart-palette-0: #4f46e5;
-  --color-chart-palette-1: #10b981;
+  --color-primary: #2563eb;
+  --color-primary-hover: #1d4ed8;
+  --color-success: #16a34a;
+  --color-danger: #dc2626;
+  --color-warning: #f59e0b;
+  --color-neutral: #64748b;
+  --color-background: #f8fafc;
+  --color-surface: #ffffff;
+  --color-text-primary: #0f172a;
+  --color-text-secondary: #475569;
+  --color-border: #e2e8f0;
+  --color-chart-palette-0: #2563eb;
+  --color-chart-palette-1: #16a34a;
   --color-chart-palette-2: #f59e0b;
-  --color-chart-palette-3: #ef4444;
-  --color-chart-palette-4: #3b82f6;
-  --color-chart-palette-5: #8b5cf6;
+  --color-chart-palette-3: #dc2626;
+  --color-chart-palette-4: #8b5cf6;
+  --color-chart-palette-5: #ec4899;
+  --color-chart-palette-6: #06b6d4;
+  --color-chart-palette-7: #84cc16;
 
-  --font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  --spacing-2xl: 48px;
 
-  --spacing-card-gap: 1rem;
-  --spacing-section-gap: 1.5rem;
-  --spacing-card-padding: 1.25rem;
-
-  --border-radius: 12px;
+  --font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.5rem;
+  --font-size-2xl: 2rem;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
 }
 
-/* Global Styles */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-background: #1e293b;
+    --color-surface: #0f172a;
+    --color-text-primary: #f1f5f9;
+    --color-text-secondary: #cbd5e1;
+    --color-border: #334155;
+  }
 }
 
-body {
-  font-family: var(--font-family);
-  background-color: var(--color-bg);
-  color: var(--color-text-primary);
-  line-height: 1.5;
-  padding: var(--spacing-section-gap);
+/* Utility Classes */
+.bg-background { background-color: var(--color-background); }
+.bg-surface { background-color: var(--color-surface); }
+.text-textPrimary { color: var(--color-text-primary); }
+.text-white { color: #ffffff; }
+.text-center { text-align: center; }
+.text-2xl { font-size: var(--font-size-2xl); }
+.text-lg { font-size: var(--font-size-lg); }
+.font-bold { font-weight: var(--font-weight-bold); }
+.font-medium { font-weight: var(--font-weight-medium); }
+.rounded { border-radius: 0.25rem; }
+.rounded-lg { border-radius: 0.5rem; }
+.shadow { box-shadow: 0 1px 3px rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,0.06); }
+.p-2 { padding: var(--spacing-xs); }
+.p-4 { padding: var(--spacing-sm); }
+.p-8 { padding: var(--spacing-md); }
+.mb-4 { margin-bottom: var(--spacing-sm); }
+.mb-8 { margin-bottom: var(--spacing-lg); }
+.gap-2 { gap: var(--spacing-xs); }
+.gap-4 { gap: var(--spacing-sm); }
+.gap-8 { gap: var(--spacing-lg); }
+.min-h-screen { min-height: 100vh; }
+.w-full { width: 100%; }
+.h-64 { height: 16rem; }
+.flex { display: flex; }
+.flex-col { flex-direction: column; }
+.flex-wrap { flex-wrap: wrap; }
+.justify-center { justify-content: center; }
+.grid { display: grid; }
+.grid-cols-1 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
+
+/* Responsive Utility Classes */
+@media (min-width: 640px) {
+  .sm\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
-/* Header */
-.header {
-  text-align: center;
-  margin-bottom: var(--spacing-section-gap);
-}
-.header h1 {
-  font-size: 1.75rem;
-  color: var(--color-accent);
+@media (min-width: 768px) {
+  .md\:p-8 { padding: var(--spacing-lg); }
 }
 
-/* Summary Cards */
-.summary-cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: var(--spacing-card-gap);
-  margin-bottom: var(--spacing-section-gap);
+@media (min-width: 1024px) {
+  .lg\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .lg\:grid-cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 }
 
-.card {
-  background-color: var(--color-card-bg);
-  padding: var(--spacing-card-padding);
-  border-radius: var(--border-radius);
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-
-.card h2 {
-  font-size: 0.9rem;
+/* Component Styles */
+.card-title {
+  font-size: var(--font-size-sm);
   color: var(--color-text-secondary);
-  margin-bottom: 0.25rem;
+  margin-bottom: var(--spacing-xs);
 }
-
-.value {
-  font-size: 1.5rem;
-  font-weight: 600;
+.card-value {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
   color: var(--color-text-primary);
 }
-
-/* Specific Card Colors */
-#card-balance .value { color: var(--color-balance); }
-#card-income .value { color: var(--color-income); }
-#card-expenses .value { color: var(--color-expense); }
-#card-savings .value { color: var(--color-savings); }
 
 /* Filter Buttons */
 .filter-group {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
-  justify-content: center;
-  margin-bottom: var(--spacing-section-gap);
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-lg);
 }
-
 .filter-btn {
-  background-color: var(--color-card-bg);
-  border: 1px solid var(--color-accent);
-  color: var(--color-accent);
-  padding: 0.5rem 1rem;
-  border-radius: var(--border-radius);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-primary);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: 0.25rem;
   cursor: pointer;
-  font-size: 0.9rem;
-  transition: background-color 0.2s, color 0.2s;
+  transition: background-color 0.2s, border-color 0.2s;
 }
-
-.filter-btn:hover {
-  background-color: var(--color-accent);
+.filter-btn:hover,
+.filter-btn:focus {
+  background-color: var(--color-primary);
   color: #fff;
+  border-color: var(--color-primary-hover);
 }
-
 .filter-btn.active {
-  background-color: var(--color-accent);
+  background-color: var(--color-primary);
   color: #fff;
+  border-color: var(--color-primary-hover);
 }
 
-/* Charts Grid */
-.charts-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: var(--spacing-card-gap);
-}
-
-.chart-card {
-  background-color: var(--color-card-bg);
-  padding: var(--spacing-card-padding);
-  border-radius: var(--border-radius);
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-}
-
-.chart-card canvas {
-  width: 100% !important;
-  height: auto !important;
-}
-
-/* Responsive Adjustments */
-@media (max-width: 640px) {
-  .header h1 { font-size: 1.5rem; }
-  .value { font-size: 1.25rem; }
+/* Chart Containers */
+.chart-container {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 0.5rem;
+  padding: var(--spacing-sm);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
 }
