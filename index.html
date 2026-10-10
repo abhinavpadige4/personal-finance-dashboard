@@ -5,57 +5,51 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Personal Finance Dashboard</title>
   <link rel="stylesheet" href="style.css" />
-  <!-- Chart.js CDN -->
-  <script defer src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js" defer></script>
+  <script type="module" src="script.js" defer></script>
 </head>
 <body class="bg-background text-text font-base">
-  <header class="p-md">
-    <h1 class="text-2xl font-bold">Personal Finance Dashboard</h1>
+  <header class="p-md border-b border-border bg-surface shadow-sm">
+    <h1 class="text-2xl font-bold">Finance Dashboard</h1>
   </header>
 
   <main class="p-md space-y-lg">
     <!-- Summary Cards -->
-    <section class="summary-cards grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-md">
-      <div class="card card-balance">
+    <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-md" id="summary-cards">
+      <article class="card" id="card-balance">
         <h2 class="card-title">Total Balance</h2>
-        <p class="card-value" id="totalBalance">$0</p>
-      </div>
-      <div class="card card-income">
+        <p class="card-value" data-key="totalBalance"></p>
+      </article>
+      <article class="card" id="card-income">
         <h2 class="card-title">Income</h2>
-        <p class="card-value" id="totalIncome">$0</p>
-      </div>
-      <div class="card card-expenses">
+        <p class="card-value" data-key="totalIncome"></p>
+      </article>
+      <article class="card" id="card-expenses">
         <h2 class="card-title">Expenses</h2>
-        <p class="card-value" id="totalExpenses">$0</p>
-      </div>
-      <div class="card card-savings">
+        <p class="card-value" data-key="totalExpenses"></p>
+      </article>
+      <article class="card" id="card-savings">
         <h2 class="card-title">Savings</h2>
-        <p class="card-value" id="totalSavings">$0</p>
-      </div>
+        <p class="card-value" data-key="totalSavings"></p>
+      </article>
     </section>
 
-    <!-- Filter Buttons -->
-    <section class="filter-group flex flex-wrap gap-sm">
-      <button class="filter-btn active" data-category="all">All</button>
-      <button class="filter-btn" data-category="Food">Food</button>
-      <button class="filter-btn" data-category="Transport">Transport</button>
-      <button class="filter-btn" data-category="Entertainment">Entertainment</button>
-      <button class="filter-btn" data-category="Utilities">Utilities</button>
+    <!-- Category Filters -->
+    <section class="flex flex-wrap gap-sm" id="category-filters" role="group" aria-label="Category filter buttons">
+      <!-- Buttons injected by script.js -->
     </section>
 
     <!-- Charts -->
-    <section class="charts grid grid-cols-1 lg:grid-cols-2 gap-lg">
-      <div class="chart-card">
+    <section class="grid grid-cols-1 lg:grid-cols-2 gap-lg">
+      <article class="chart-card">
         <h2 class="chart-title">Spending by Category</h2>
-        <canvas id="categoryChart" aria-label="Spending by Category" role="img"></canvas>
-      </div>
-      <div class="chart-card">
+        <canvas id="categoryBarChart" aria-label="Bar chart of spending by category" role="img"></canvas>
+      </article>
+      <article class="chart-card">
         <h2 class="chart-title">Monthly Trend</h2>
-        <canvas id="trendChart" aria-label="Monthly Income & Expenses" role="img"></canvas>
-      </div>
+        <canvas id="monthlyLineChart" aria-label="Line chart of monthly income/expenses" role="img"></canvas>
+      </article>
     </section>
   </main>
-
-  <script type="module" src="script.js"></script>
 </body>
 </html>
